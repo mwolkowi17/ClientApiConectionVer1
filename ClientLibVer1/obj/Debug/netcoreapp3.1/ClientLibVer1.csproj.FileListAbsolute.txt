@@ -39,3 +39,5 @@ C:\Users\Marcin\source\repos\ClientLibVer1\ClientLibVer1\bin\Debug\netcoreapp3.1
 C:\Users\Marcin\source\repos\ClientLibVer1\ClientLibVer1\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Marcin\source\repos\ClientLibVer1\ClientLibVer1\obj\Debug\netcoreapp3.1\ClientLibVer1.csproj.CoreCompileInputs.cache
 C:\Users\Marcin\source\repos\ClientLibVer1\ClientLibVer1\obj\Debug\netcoreapp3.1\ClientLibVer1.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Marcin\source\repos\ClientLibVer1\ClientLibVer1\obj\Debug\netcoreapp3.1\Razor\Views\UserList\Index.cshtml.g.cs
+C:\Users\Marcin\source\repos\ClientLibVer1\ClientLibVer1\obj\Debug\netcoreapp3.1\Razor\Views\RecordList\Index.cshtml.g.cs

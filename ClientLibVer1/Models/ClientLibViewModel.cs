@@ -11,7 +11,7 @@ namespace ClientLibVer1.Models
         
         public ItemViewModel[] Items { get; set; }
         public ICollection<ItemB> Itemcolection { get; set; }
-
-
+        public ICollection<UserB> Usercolection { get; set; }
+        public ICollection<RecordB> Recordcolection { get; set; }
     }
 }

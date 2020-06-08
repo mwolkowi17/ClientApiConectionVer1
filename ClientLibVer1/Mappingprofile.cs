@@ -13,6 +13,8 @@ namespace ClientLibVer1
         public Mappingprofile()
         {
             CreateMap<Item, ItemB>();
+            CreateMap<User, UserB>();
+            CreateMap <Record, RecordB>();
         }
     }
 }

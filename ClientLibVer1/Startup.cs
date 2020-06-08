@@ -27,6 +27,8 @@ namespace ClientLibVer1
         {
             services.AddControllersWithViews();
             services.AddTransient<ItemService>();
+            services.AddTransient<UserService>();
+            services.AddTransient <RecordService>();
             services.AddAutoMapper(typeof(Mappingprofile));
 
         }

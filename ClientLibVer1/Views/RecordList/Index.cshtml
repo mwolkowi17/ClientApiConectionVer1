@@ -1,0 +1,29 @@
+﻿@model ClientLibViewModel;
+@{
+    ViewData["Title"] = "Records List";
+}
+<h1> View check</h1>
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+
+                <td>RecordId</td>
+                <td>ItemId</td>
+                <td>UserId</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Recordcolection)
+            {
+                <tr>
+
+                    <td>@item.RecordId</td>
+                    <td>@item.ItemId</td>
+                    <td>@item.UserId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
