@@ -29,5 +29,18 @@ namespace ClientLibVer1.Controllers
             };
             return View(model);
         }
+
+        public async Task<IActionResult> AddItem(Services.ItemType typeB, Services.ItemStatus statusB, int ownerB)
+        //public async Task<IActionResult> AddItem()
+        {
+            await _ItemService.AddNewItem(typeB, statusB, ownerB);
+            //await _ItemService.AddNewItem(0, 0, 4);
+            ICollection<ItemB> fordisplay = await _ItemService.GetAll();
+            var model = new ClientLibViewModel()
+            {
+                Itemcolection = fordisplay
+            };
+            return View(model);
+        }
     }
 }

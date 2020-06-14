@@ -7,6 +7,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Policy;
 using System.Threading.Tasks;
 
@@ -31,6 +32,19 @@ namespace ClientLibVer1.Services
             ICollection<Item> kolekcja = await ClientLi.ItemsAllAsync();
             ICollection<ItemB> returnvalue = _mapper.Map<ICollection<ItemB>>(kolekcja);
             return returnvalue;
+        }
+
+        public async Task<ItemB> AddNewItem(ItemType type, ItemStatus status, int owner)
+        {
+            Item newitem = new Item();
+            newitem.ItemType = type;
+            newitem.ItemStatus = status;
+            newitem.OwnerId = owner;
+            LibraryServiceHttpClient ClientLi = new LibraryServiceHttpClient(url, httpClient);
+            await ClientLi.ItemsAsync(newitem);
+            ItemB returnvalue = _mapper.Map<ItemB>(newitem);
+            return returnvalue;
+
         }
 
 
