@@ -27,5 +27,18 @@ namespace ClientLibVer1.Services
             ICollection<UserB> returnvalue = _mapper.Map<ICollection<UserB>>(usercolection);
             return returnvalue;
         }
+
+        public async Task<UserB> AddNewUser(string email, string password, UserStatus userstatus, UserRole userrole)
+        {
+            User newuser = new User();
+            newuser.Email = email;
+            newuser.Password = password;
+            newuser.UserStatus = userstatus;
+            newuser.UserRole = userrole;
+            LibraryServiceHttpClient ClientLi = new LibraryServiceHttpClient(url, httpClient);
+            await ClientLi.UsersAsync(newuser);
+            UserB returnvalue = _mapper.Map<UserB>(newuser);
+            return returnvalue;
+        }
     }
 }

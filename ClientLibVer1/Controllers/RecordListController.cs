@@ -22,12 +22,23 @@ namespace ClientLibVer1.Controllers
         // GET: /<controller>/
         public async Task<IActionResult> Index()
         {
-            ICollection<RecordB> fordisplay = await _RecordService.GetAllUsers();
+            ICollection<RecordB> fordisplay = await _RecordService.GetAllRecords();
             var model = new ClientLibViewModel()
             {
                 Recordcolection = fordisplay
             };
             return View(model);
+        }
+
+        public async Task<IActionResult> AddRecord(int itemidb, int useridb, Services.RecordStatus recordstatusb, DateTime datetimeb)
+        {
+            await _RecordService.AddNewRecord(itemidb, useridb, recordstatusb, datetimeb); ICollection<RecordB> fordisplay = await _RecordService.GetAllRecords();
+            var model = new ClientLibViewModel()
+            {
+                Recordcolection = fordisplay
+            };
+            return View(model);
+
         }
     }
 }

@@ -20,7 +20,7 @@ namespace ClientLibVer1.Services
             _mapper = mapper;
         }
 
-        public async Task<ICollection<RecordB>> GetAllUsers()
+        public async Task<ICollection<RecordB>> GetAllRecords()
         {
             LibraryServiceHttpClient ClientLi = new LibraryServiceHttpClient(url, httpClient);
             ICollection<Record> recordcolection = await ClientLi.RecordsAllAsync();
@@ -28,5 +28,17 @@ namespace ClientLibVer1.Services
             return returnvalue;
         }
         
+        public async Task<RecordB> AddNewRecord (int itemid,int userid,RecordStatus recordstatus,DateTime datetime)
+        {
+            Record newrecord = new Record();
+            newrecord.ItemId = itemid;
+            newrecord.UserId = userid;
+            newrecord.RecordStatus = recordstatus;
+            newrecord.DateTime = datetime;
+            LibraryServiceHttpClient ClientLi = new LibraryServiceHttpClient(url, httpClient);
+            await ClientLi.RecordsAsync(newrecord);
+            RecordB returnvalue = _mapper.Map<RecordB>(newrecord);
+            return returnvalue;
+        }
     }
 }

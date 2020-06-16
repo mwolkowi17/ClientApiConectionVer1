@@ -28,5 +28,18 @@ namespace ClientLibVer1.Controllers
             };
             return View(model);
         }
+
+        public async Task<IActionResult> AddUser(string emalilb, string passwordb, Services.UserStatus userstatusb, Services.UserRole userroleb)
+        //public async Task<IActionResult> AddUser()
+        {
+            await _UserService.AddNewUser(emalilb, passwordb, userstatusb, userroleb);
+            //await _UserService.AddNewUser("mar@wp.pl", "passwordb", 0, 0);
+            ICollection<UserB> userfordisplay = await _UserService.GetAllUsers();
+            var model = new ClientLibViewModel()
+            {
+                Usercolection = userfordisplay
+            };
+            return View(model);
+        }
     }
 }
