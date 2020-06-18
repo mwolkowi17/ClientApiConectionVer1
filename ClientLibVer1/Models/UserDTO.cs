@@ -1,12 +1,8 @@
-﻿using ClientLibVer1.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ClientLib.Services;
 
-namespace ClientLibVer1.Models
+namespace ClientLib.Models
 {
-    public class UserB
+    public class UserDTO
     {
         public int UserId { get; set; }
         public string Email { get; set; }

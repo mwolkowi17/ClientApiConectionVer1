@@ -1,6 +1,4 @@
-using System;
-
-namespace ClientLibVer1.Models
+namespace ClientLib.Models
 {
     public class ErrorViewModel
     {

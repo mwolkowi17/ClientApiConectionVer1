@@ -1,46 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using ClientLibVer1.Models;
-using ClientLibVer1.Services;
+using ClientLib.Models;
+using ClientLib.Services;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace ClientLibVer1.Controllers
+namespace ClientLib.Controllers
 {
     public class ItemListController : Controller
     {
-        private readonly ItemService _ItemService;
+        private readonly ItemService _itemService;
         
         public ItemListController( ItemService itemService)
         {
-            _ItemService = itemService;
+            _itemService = itemService;
         }
 
         // GET: /<controller>/
         public async Task<IActionResult> Index()
         {
-           ICollection<ItemB> fordisplay = await _ItemService.GetAll();
+            ICollection<ItemDTO> itemsDTOToDIsplay = await _itemService.GetAll();
             var model = new ClientLibViewModel()
             {
-                Itemcolection = fordisplay
+                ItemCollection = itemsDTOToDIsplay
             };
+            
             return View(model);
         }
 
-        public async Task<IActionResult> AddItem(Services.ItemType typeB, Services.ItemStatus statusB, int ownerB)
-        //public async Task<IActionResult> AddItem()
+        public async Task<IActionResult> AddItem(Services.ItemType typeDTO, Services.ItemStatus statusDTO, int ownerDTO)
         {
-            await _ItemService.AddNewItem(typeB, statusB, ownerB);
-            //await _ItemService.AddNewItem(0, 0, 4);
-            ICollection<ItemB> fordisplay = await _ItemService.GetAll();
-            var model = new ClientLibViewModel()
-            {
-                Itemcolection = fordisplay
-            };
-            return View(model);
+            await _itemService.AddNewItem(typeDTO, statusDTO, ownerDTO);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

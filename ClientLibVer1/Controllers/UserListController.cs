@@ -1,45 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using ClientLibVer1.Models;
-using ClientLibVer1.Services;
+using ClientLib.Models;
+using ClientLib.Services;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace ClientLibVer1.Controllers
+namespace ClientLib.Controllers
 {
     public class UserListController : Controller
     {
-        private readonly UserService _UserService;
+        private readonly UserService _userService;
 
         public UserListController(UserService userService)
         {
-            _UserService = userService;
+            _userService = userService;
         }
+
         // GET: /<controller>/
         public async Task<IActionResult> Index()
         {
-            ICollection<UserB> userfordisplay = await _UserService.GetAllUsers();
+            ICollection<UserDTO> usersToDisplay = await _userService.GetAllUsers();
             var model = new ClientLibViewModel()
             {
-                Usercolection = userfordisplay
+                UserCollection = usersToDisplay
             };
+            
             return View(model);
         }
 
         public async Task<IActionResult> AddUser(string emalilb, string passwordb, Services.UserStatus userstatusb, Services.UserRole userroleb)
-        //public async Task<IActionResult> AddUser()
         {
-            await _UserService.AddNewUser(emalilb, passwordb, userstatusb, userroleb);
-            //await _UserService.AddNewUser("mar@wp.pl", "passwordb", 0, 0);
-            ICollection<UserB> userfordisplay = await _UserService.GetAllUsers();
-            var model = new ClientLibViewModel()
-            {
-                Usercolection = userfordisplay
-            };
-            return View(model);
+            await _userService.AddNewUser(emalilb, passwordb, userstatusb, userroleb);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

@@ -1,20 +1,20 @@
 ﻿using AutoMapper;
-using ClientLibVer1.Models;
-using ClientLibVer1.Services;
+using ClientLib.Models;
+using ClientLib.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ClientLibVer1
+namespace ClientLib
 {
     public class Mappingprofile: Profile
     {
         public Mappingprofile()
         {
-            CreateMap<Item, ItemB>();
-            CreateMap<User, UserB>();
-            CreateMap <Record, RecordB>();
+            CreateMap<Item, ItemDTO>();
+            CreateMap<User, UserDTO>();
+            CreateMap <Record, RecordDTO>();
         }
     }
 }

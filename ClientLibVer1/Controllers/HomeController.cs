@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ClientLibVer1.Models;
+using ClientLib.Models;
 
-namespace ClientLibVer1.Controllers
+namespace ClientLib.Controllers
 {
     public class HomeController : Controller
     {

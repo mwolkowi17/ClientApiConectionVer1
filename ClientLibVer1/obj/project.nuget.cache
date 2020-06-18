@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Y45B26X2qIJXsyMTkKLERqpIM1IgZ9ISffTGtgBErXDCauilJlWmChOYngP6kXZ64P9e4Gl1KSJW8eBTWt0z0Q==",
+  "dgSpecHash": "hWY3fEnXpWUcXlMe7d7WV5tcz7aFlPoIIeobVdft12NeFIkEa5QNzSg//+u1wYnyJL310bZveZKNDev5L1dpRA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Marcin\\source\\repos\\ClientApiConectionVer1\\ClientLibVer1\\ClientLibVer1.csproj",
+  "projectFilePath": "C:\\Users\\Marcin\\source\\repos\\ClientApiConectionVer1\\ClientLibVer1\\ClientLib.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Marcin\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\Marcin\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",

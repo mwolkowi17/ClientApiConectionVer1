@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using ClientLibVer1.Models;
-using ClientLibVer1.Services;
+using ClientLib.Models;
+using ClientLib.Services;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace ClientLibVer1.Controllers
+namespace ClientLib.Controllers
 {
     public class RecordListController : Controller
     {
@@ -22,23 +21,20 @@ namespace ClientLibVer1.Controllers
         // GET: /<controller>/
         public async Task<IActionResult> Index()
         {
-            ICollection<RecordB> fordisplay = await _RecordService.GetAllRecords();
+            ICollection<RecordDTO> recordsToDisplay = await _RecordService.GetAllRecords();
             var model = new ClientLibViewModel()
             {
-                Recordcolection = fordisplay
+                RecordCollection = recordsToDisplay
             };
+            
             return View(model);
         }
 
         public async Task<IActionResult> AddRecord(int itemidb, int useridb, Services.RecordStatus recordstatusb, DateTime datetimeb)
         {
-            await _RecordService.AddNewRecord(itemidb, useridb, recordstatusb, datetimeb); ICollection<RecordB> fordisplay = await _RecordService.GetAllRecords();
-            var model = new ClientLibViewModel()
-            {
-                Recordcolection = fordisplay
-            };
-            return View(model);
-
+            await _RecordService.AddNewRecord(itemidb, useridb, recordstatusb, datetimeb); 
+            
+            return RedirectToAction(nameof(Index));
         }
     }
 }

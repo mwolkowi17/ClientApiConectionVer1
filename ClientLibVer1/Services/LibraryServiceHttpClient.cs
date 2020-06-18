@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ClientLibVer1.Services
+﻿namespace ClientLib.Services
 {
     using System = global::System;
 

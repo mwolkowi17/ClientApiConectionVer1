@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
-using ClientLibVer1.Models;
+using ClientLib.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace ClientLibVer1.Services
+namespace ClientLib.Services
 {
     public class RecordService
     {
@@ -20,25 +19,28 @@ namespace ClientLibVer1.Services
             _mapper = mapper;
         }
 
-        public async Task<ICollection<RecordB>> GetAllRecords()
+        public async Task<ICollection<RecordDTO>> GetAllRecords()
         {
-            LibraryServiceHttpClient ClientLi = new LibraryServiceHttpClient(url, httpClient);
-            ICollection<Record> recordcolection = await ClientLi.RecordsAllAsync();
-            ICollection<RecordB> returnvalue = _mapper.Map<ICollection<RecordB>>(recordcolection);
-            return returnvalue;
+            LibraryServiceHttpClient LibraryClient = new LibraryServiceHttpClient(url, httpClient);
+            ICollection<Record> records = await LibraryClient.RecordsAllAsync();
+
+            return _mapper.Map<ICollection<RecordDTO>>(records);
         }
         
-        public async Task<RecordB> AddNewRecord (int itemid,int userid,RecordStatus recordstatus,DateTime datetime)
+        public async Task<RecordDTO> AddNewRecord (int itemid,int userid,RecordStatus recordstatus,DateTime datetime)
         {
-            Record newrecord = new Record();
-            newrecord.ItemId = itemid;
-            newrecord.UserId = userid;
-            newrecord.RecordStatus = recordstatus;
-            newrecord.DateTime = datetime;
-            LibraryServiceHttpClient ClientLi = new LibraryServiceHttpClient(url, httpClient);
-            await ClientLi.RecordsAsync(newrecord);
-            RecordB returnvalue = _mapper.Map<RecordB>(newrecord);
-            return returnvalue;
+            Record newRecord = new Record()
+            {
+                ItemId = itemid,
+                UserId = userid,
+                RecordStatus = recordstatus,
+                DateTime = datetime
+            };
+
+            LibraryServiceHttpClient LibraryClient = new LibraryServiceHttpClient(url, httpClient);
+            await LibraryClient.RecordsAsync(newRecord);
+
+            return _mapper.Map<RecordDTO>(newRecord);
         }
     }
 }

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ClientLibVer1.Models
+﻿namespace ClientLib.Models
 {
-   
-    public class ItemB
+    public class ItemDTO
     {
         public int ItemId { get; set; }
         public ItemType ItemType { get; set; }

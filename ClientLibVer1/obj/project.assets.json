@@ -891,11 +891,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Marcin\\Source\\Repos\\ClientApiConectionVer1\\ClientLibVer1\\ClientLibVer1.csproj",
-      "projectName": "ClientLibVer1",
-      "projectPath": "C:\\Users\\Marcin\\Source\\Repos\\ClientApiConectionVer1\\ClientLibVer1\\ClientLibVer1.csproj",
+      "projectUniqueName": "C:\\Users\\Marcin\\source\\repos\\ClientApiConectionVer1\\ClientLibVer1\\ClientLib.csproj",
+      "projectName": "ClientLib",
+      "projectPath": "C:\\Users\\Marcin\\source\\repos\\ClientApiConectionVer1\\ClientLibVer1\\ClientLib.csproj",
       "packagesPath": "C:\\Users\\Marcin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Marcin\\Source\\Repos\\ClientApiConectionVer1\\ClientLibVer1\\obj\\",
+      "outputPath": "C:\\Users\\Marcin\\source\\repos\\ClientApiConectionVer1\\ClientLibVer1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

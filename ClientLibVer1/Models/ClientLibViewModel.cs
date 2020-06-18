@@ -1,17 +1,12 @@
-﻿using ClientLibVer1.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace ClientLibVer1.Models
+namespace ClientLib.Models
 {
     public class ClientLibViewModel
-    {
-        
+    {    
         public ItemViewModel[] Items { get; set; }
-        public ICollection<ItemB> Itemcolection { get; set; }
-        public ICollection<UserB> Usercolection { get; set; }
-        public ICollection<RecordB> Recordcolection { get; set; }
+        public ICollection<ItemDTO> ItemCollection { get; set; }
+        public ICollection<UserDTO> UserCollection { get; set; }
+        public ICollection<RecordDTO> RecordCollection { get; set; }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ClientLibVer1.Models
+﻿namespace ClientLib.Models
 {
     public enum ItemStatus
     {
@@ -18,6 +13,7 @@ namespace ClientLibVer1.Models
         AudioCD,
         DVD
     }
+    
     public class ItemViewModel
     {
         public int ItemId { get; set; }

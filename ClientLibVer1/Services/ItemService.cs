@@ -1,17 +1,10 @@
 ﻿using AutoMapper;
-using ClientLibVer1.Models;
-using System;
-using System.Collections;
+using ClientLib.Models;
 using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Linq;
 using System.Net.Http;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Security.Policy;
 using System.Threading.Tasks;
 
-namespace ClientLibVer1.Services
+namespace ClientLib.Services
 {
     public class ItemService
     {
@@ -25,33 +18,27 @@ namespace ClientLibVer1.Services
             _mapper = mapper;
         }
 
-        public async Task<ICollection<ItemB>> GetAll()
-        //public async Task<ItemViewModel[]> GetAll()
+        public async Task<ICollection<ItemDTO>> GetAll()
         {
-            LibraryServiceHttpClient ClientLi = new LibraryServiceHttpClient(url, httpClient);
-            ICollection<Item> kolekcja = await ClientLi.ItemsAllAsync();
-            ICollection<ItemB> returnvalue = _mapper.Map<ICollection<ItemB>>(kolekcja);
-            return returnvalue;
+            LibraryServiceHttpClient libraryClient = new LibraryServiceHttpClient(url, httpClient);
+            ICollection<Item> items = await libraryClient.ItemsAllAsync();
+
+            return _mapper.Map<ICollection<ItemDTO>>(items);
         }
 
-        public async Task<ItemB> AddNewItem(ItemType type, ItemStatus status, int owner)
+        public async Task<ItemDTO> AddNewItem(ItemType type, ItemStatus status, int owner)
         {
-            Item newitem = new Item();
-            newitem.ItemType = type;
-            newitem.ItemStatus = status;
-            newitem.OwnerId = owner;
-            LibraryServiceHttpClient ClientLi = new LibraryServiceHttpClient(url, httpClient);
-            await ClientLi.ItemsAsync(newitem);
-            ItemB returnvalue = _mapper.Map<ItemB>(newitem);
-            return returnvalue;
+            Item newItem = new Item()
+            {
+                ItemType = type,
+                ItemStatus = status,
+                OwnerId = owner
+            };
 
+            LibraryServiceHttpClient LibraryClient = new LibraryServiceHttpClient(url, httpClient);
+            await LibraryClient.ItemsAsync(newItem);
+
+            return _mapper.Map<ItemDTO>(newItem);
         }
-
-
-    }
-       
-        
-    
-        
-    
+    }     
 }

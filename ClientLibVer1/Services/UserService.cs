@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using ClientLibVer1.Models;
+using ClientLib.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace ClientLibVer1.Services
+namespace ClientLib.Services
 {
     public class UserService
     {
@@ -20,25 +20,28 @@ namespace ClientLibVer1.Services
             _mapper = mapper;
         }
 
-        public async Task<ICollection<UserB>> GetAllUsers()
+        public async Task<ICollection<UserDTO>> GetAllUsers()
         {
-            LibraryServiceHttpClient ClientLi = new LibraryServiceHttpClient(url,httpClient);
-            ICollection<User> usercolection = await ClientLi.UsersAllAsync();
-            ICollection<UserB> returnvalue = _mapper.Map<ICollection<UserB>>(usercolection);
-            return returnvalue;
+            LibraryServiceHttpClient libraryClient = new LibraryServiceHttpClient(url,httpClient);
+            ICollection<User> users = await libraryClient.UsersAllAsync();
+  
+            return _mapper.Map<ICollection<UserDTO>>(users);
         }
 
-        public async Task<UserB> AddNewUser(string email, string password, UserStatus userstatus, UserRole userrole)
+        public async Task<UserDTO> AddNewUser(string email, string password, UserStatus userstatus, UserRole userrole)
         {
-            User newuser = new User();
-            newuser.Email = email;
-            newuser.Password = password;
-            newuser.UserStatus = userstatus;
-            newuser.UserRole = userrole;
-            LibraryServiceHttpClient ClientLi = new LibraryServiceHttpClient(url, httpClient);
-            await ClientLi.UsersAsync(newuser);
-            UserB returnvalue = _mapper.Map<UserB>(newuser);
-            return returnvalue;
+            User newUser = new User() 
+            {
+                Email = email,
+                Password = password,
+                UserStatus = userstatus,
+                UserRole = userrole
+            };
+
+            LibraryServiceHttpClient libraryClient = new LibraryServiceHttpClient(url, httpClient);
+            await libraryClient.UsersAsync(newUser);
+
+            return _mapper.Map<UserDTO>(newUser);
         }
     }
 }
